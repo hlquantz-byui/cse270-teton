@@ -63,11 +63,11 @@ class TestSmokeTest():
     assert len(elements) > 0
   
   def test_5AdminPageLoginErrorVerification(self):
-    self.driver.get("http://127.0.0.1:5501/teton/1.6/admin.html")
+    self.driver.get("http://127.0.0.1:5500/teton/1.6/admin.html")
     elements = self.driver.find_elements(By.ID, "username")
     assert len(elements) > 0
     self.driver.find_element(By.ID, "username").send_keys("incorrectUserName")
     self.driver.find_element(By.ID, "password").send_keys("incorrectPassword")
     self.driver.find_element(By.CSS_SELECTOR, ".mysubmit:nth-child(4)").click()
-    assert self.driver.find_element(By.CSS_SELECTOR, ".errorMessage").text == "Invalid username and password."
+    WebDriverWait(self.driver, 30).until(expected_conditions.text_to_be_present_in_element((By.CSS_SELECTOR, ".errorMessage"), "Invalid username and password."))
   
