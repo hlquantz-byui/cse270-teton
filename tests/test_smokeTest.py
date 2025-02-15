@@ -19,7 +19,7 @@ class TestSmokeTest():
     self.driver.quit()
   
   def test_1Navigatetothehomepage(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("http://127.0.0.1:5501/teton/1.6/index.html")
     self.driver.set_window_size(1920, 1036)
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".header-logo img")
     assert len(elements) > 0
@@ -28,7 +28,7 @@ class TestSmokeTest():
     assert self.driver.title == "Teton Idaho CoC"
   
   def test_2Navigatetothehomepage(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/index.html")
+    self.driver.get("http://127.0.0.1:5501/teton/1.6/index.html")
     self.driver.set_window_size(1200, 800)
     elements = self.driver.find_elements(By.LINK_TEXT, "Home")
     assert len(elements) > 0
@@ -41,14 +41,14 @@ class TestSmokeTest():
     self.driver.find_element(By.LINK_TEXT, "Join Us").click()
   
   def test_3DirectoryPageBusinessVerification(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/directory.html")
+    self.driver.get("http://127.0.0.1:5501/teton/1.6/directory.html")
     self.driver.find_element(By.ID, "directory-grid").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
     self.driver.find_element(By.ID, "directory-list").click()
     assert self.driver.find_element(By.CSS_SELECTOR, ".gold-member:nth-child(9) > p:nth-child(2)").text == "Teton Turf and Tree"
   
   def test_4JoinPageInputVerificatoin(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/join.html")
+    self.driver.get("http://127.0.0.1:5501/teton/1.6/join.html")
     elements = self.driver.find_elements(By.CSS_SELECTOR, ".myinput:nth-child(2)")
     assert len(elements) > 0
     self.driver.find_element(By.NAME, "fname").send_keys("YourFirstName")
@@ -60,7 +60,7 @@ class TestSmokeTest():
     assert len(elements) > 0
   
   def test_5AdminPageLoginErrorVerification(self):
-    self.driver.get("http://127.0.0.1:5500/teton/1.6/admin.html")
+    self.driver.get("http://127.0.0.1:5501/teton/1.6/admin.html")
     elements = self.driver.find_elements(By.ID, "username")
     assert len(elements) > 0
     self.driver.find_element(By.ID, "username").send_keys("incorrectUserName")
